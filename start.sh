@@ -27,12 +27,12 @@ fi
 echo "Updating crontab..."
 
 cat > /etc/crontabs/root <<EOF
-* * * * * ping.sh ${TARGET}
-*/5 * * * * graph.sh ${TARGET} 1h 1d 1w 1y 10y
+* * * * * ping.sh
+*/5 * * * * graph.sh 1h 1d 1w 1y 10y
 EOF
 
 echo "Generating graphs..."
-graph.sh ${TARGET} 1h 1d 1w 1y 10y
+graph.sh 1h 1d 1w 1y 10y
 
 echo "Starting web server..."
 httpd -p 80 -h /srv/www/

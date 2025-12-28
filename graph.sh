@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "<center>" > /srv/www/index.html
+NOW=$(date +%s)
+
 for i in "$@"; do
     rrdtool graph /srv/www/$i.png --start -$i \
         --font DEFAULT:10:Inconsolata \
@@ -36,4 +39,8 @@ for i in "$@"; do
         COMMENT:"\n" \
         COMMENT:"fping to ${TARGET}" \
         COMMENT:"Generated $(date | sed 's/:/\\:/g')" >/dev/null
+
+        echo "<img src='/$i.png?d=$NOW' /> <br /><br />" >> /srv/www/index.html
 done
+
+echo "</center>" >> /srv/www/index.html
