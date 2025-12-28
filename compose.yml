@@ -1,0 +1,10 @@
+services:
+  pingtool:
+    image: tonyb486/pingtool
+    build: .
+    environment:
+      TARGET: 8.8.4.4
+    ports:
+      - "8000:80"
+    volumes:
+      - ./data:/data
