@@ -3,6 +3,7 @@ services:
     image: tonyb486/pingtool
     build: .
     environment:
+      TZ: America/New_York
       TARGET: 8.8.4.4
     ports:
       - "8000:80"

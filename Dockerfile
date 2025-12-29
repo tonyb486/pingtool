@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --no-cache busybox-extras rrdtool fping font-inconsolata
+RUN apk add --no-cache busybox-extras rrdtool fping font-inconsolata tzdata
 RUN mkdir -p /srv/www
 RUN mkdir -p /data
 
