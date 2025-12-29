@@ -13,7 +13,6 @@ RUN addgroup -g 1000 appgroup && \
 
 RUN chown -R appuser:appgroup /srv/www
 RUN chown -R appuser:appgroup /data
-RUN chown -R appuser:appgroup /etc/crontabs
 
 USER appuser
 
