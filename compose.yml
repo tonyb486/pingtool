@@ -5,6 +5,7 @@ services:
     environment:
       TZ: America/New_York
       TARGET: 8.8.4.4
+      NUM_PINGS: 5
     ports:
       - "8000:80"
     volumes:
