@@ -13,15 +13,17 @@ for i in "$@"; do
         --title "Ping to ${TARGET} ($i)" \
         DEF:ping=/data/ping.rrd:ping:AVERAGE \
         DEF:loss=/data/ping.rrd:loss:AVERAGE  \
-        DEF:v_min=/data/ping.rrd:ping:MIN \
-        DEF:v_max=/data/ping.rrd:ping:MAX \
-        CDEF:delta=v_max,v_min,- \
-        AREA:v_min#FFFFFF00 \
+        DEF:ping_min=/data/ping.rrd:ping:MIN \
+        DEF:ping_max=/data/ping.rrd:ping:MAX \
+        DEF:loss_min=/data/ping.rrd:loss:MIN \
+        DEF:loss_max=/data/ping.rrd:loss:MAX \
+        CDEF:delta=ping_max,ping_min,- \
+        AREA:ping_min#FFFFFF00 \
         STACK:delta#0000FF40 \
         LINE:ping#0000FF:Ping\ \(RTT\ ms\) \
         LINE:loss#FF0000:Loss\ \(%\) \
-        VDEF:ping_min=v_min,MINIMUM \
-        VDEF:ping_max=v_max,MAXIMUM \
+        VDEF:ping_min=ping_min,MINIMUM \
+        VDEF:ping_max=ping_max,MAXIMUM \
         VDEF:ping_avg=ping,AVERAGE \
         COMMENT:"\n" \
         COMMENT:"ping\:" \
@@ -29,8 +31,8 @@ for i in "$@"; do
         GPRINT:ping_max:"max\: %5.2lf" \
         GPRINT:ping_avg:"avg\: %5.2lf" \
         COMMENT:"\n" \
-        VDEF:loss_min=loss,MINIMUM \
-        VDEF:loss_max=loss,MAXIMUM \
+        VDEF:loss_min=loss_min,MINIMUM \
+        VDEF:loss_max=loss_max,MAXIMUM \
         VDEF:loss_avg=loss,AVERAGE \
         COMMENT:"loss\:" \
         GPRINT:loss_min:"min\: %5.2lf" \
