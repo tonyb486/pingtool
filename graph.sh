@@ -22,22 +22,22 @@ for i in "$@"; do
         STACK:delta#0000FF40 \
         LINE:ping#0000FF:Ping\ \(RTT\ ms\) \
         LINE:loss#FF0000:Loss\ \(%\) \
-        VDEF:ping_min=ping_min,MINIMUM \
-        VDEF:ping_max=ping_max,MAXIMUM \
-        VDEF:ping_avg=ping,AVERAGE \
+        VDEF:ping_smin=ping_min,MINIMUM \
+        VDEF:ping_smax=ping_max,MAXIMUM \
+        VDEF:ping_savg=ping,AVERAGE \
         COMMENT:"\n" \
         COMMENT:"ping\:" \
-        GPRINT:ping_min:"min\: %5.2lf" \
-        GPRINT:ping_max:"max\: %5.2lf" \
-        GPRINT:ping_avg:"avg\: %5.2lf" \
+        GPRINT:ping_smin:"min\: %5.2lf" \
+        GPRINT:ping_smax:"max\: %5.2lf" \
+        GPRINT:ping_savg:"avg\: %5.2lf" \
         COMMENT:"\n" \
-        VDEF:loss_min=loss_min,MINIMUM \
-        VDEF:loss_max=loss_max,MAXIMUM \
-        VDEF:loss_avg=loss,AVERAGE \
+        VDEF:loss_smin=loss_min,MINIMUM \
+        VDEF:loss_smax=loss_max,MAXIMUM \
+        VDEF:loss_savg=loss,AVERAGE \
         COMMENT:"loss\:" \
-        GPRINT:loss_min:"min\: %5.2lf" \
-        GPRINT:loss_max:"max\: %5.2lf" \
-        GPRINT:loss_avg:"avg\: %5.2lf" \
+        GPRINT:loss_smin:"min\: %5.2lf" \
+        GPRINT:loss_smax:"max\: %5.2lf" \
+        GPRINT:loss_savg:"avg\: %5.2lf" \
         COMMENT:"\n" \
         COMMENT:"fping to ${TARGET}" \
         COMMENT:"Generated $(date | sed 's/:/\\:/g')" >/dev/null
