@@ -8,4 +8,13 @@ ADD graph.sh /bin/graph.sh
 ADD ping.sh /bin/ping.sh
 ADD start.sh /bin/start.sh
 
+RUN addgroup -g 1000 appgroup && \
+    adduser -u 1000 -G appgroup -S -D appuser
+
+RUN chown -R appuser:appgroup /srv/www
+RUN chown -R appuser:appgroup /data
+RUN chown -R appuser:appgroup /etc/crontabs
+
+USER appuser
+
 ENTRYPOINT ["/bin/start.sh"]
