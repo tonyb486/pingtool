@@ -8,8 +8,6 @@ for i in "$@"; do
         --font DEFAULT:10:Inconsolata \
         --height 200 --width 600 \
         --vertical-label "Ping (ms)" \
-        --right-axis-label "Loss (%)" \
-        --right-axis-formatter numeric \
         --title "Ping to ${TARGET} ($i)" \
         DEF:ping=/data/ping.rrd:ping:AVERAGE \
         DEF:loss=/data/ping.rrd:loss:AVERAGE  \
@@ -17,11 +15,15 @@ for i in "$@"; do
         DEF:ping_max=/data/ping.rrd:ping:MAX \
         DEF:loss_min=/data/ping.rrd:loss:MIN \
         DEF:loss_max=/data/ping.rrd:loss:MAX \
+        CDEF:ping_bad=loss,10,GT \
+        CDEF:ping_worse=loss,50,GT \
         CDEF:delta=ping_max,ping_min,- \
         AREA:ping_min#FFFFFF00 \
         STACK:delta#0000FF40 \
-        LINE:ping#0000FF:Ping\ \(RTT\ ms\) \
-        LINE:loss#FF0000:Loss\ \(%\) \
+        LINE:ping#0000FF:'Ping (RTT ms)' \
+        AREA:ping#FFFFFF00 \
+        STACK:ping_bad#FF00007F:'Loss >10%' \
+        STACK:ping_worse#FF0000:'Loss >50%' \
         VDEF:ping_smin=ping_min,MINIMUM \
         VDEF:ping_smax=ping_max,MAXIMUM \
         VDEF:ping_savg=ping,AVERAGE \
