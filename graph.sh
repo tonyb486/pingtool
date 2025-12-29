@@ -20,8 +20,8 @@ for i in "$@"; do
         STACK:delta#0000FF40 \
         LINE:ping#0000FF:Ping\ \(RTT\ ms\) \
         LINE:loss#FF0000:Loss\ \(%\) \
-        VDEF:ping_min=ping,MINIMUM \
-        VDEF:ping_max=ping,MAXIMUM \
+        VDEF:ping_min=v_min,MINIMUM \
+        VDEF:ping_max=v_max,MAXIMUM \
         VDEF:ping_avg=ping,AVERAGE \
         COMMENT:"\n" \
         COMMENT:"ping\:" \
