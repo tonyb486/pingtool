@@ -29,7 +29,7 @@ httpd -p 80 -h /srv/www/
 
 echo "Starting loop..."
 while true; do
-    graph.sh 3h 1d 1w 1y 10y
+    graph.sh ${GRAPHS}
     ping.sh
 
     sleep $((60 - $(date +%S)))
