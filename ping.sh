@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PINGDATA=$(fping -i 50 -c 5 -i 1 1.1.1.1 2>&1 | tail -n1)
+PINGDATA=$(fping -i 50 -c 5 -i 1 ${TARGET} 2>&1 | tail -n1)
 
 echo $PINGDATA
 

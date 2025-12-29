@@ -5,7 +5,7 @@
 
 if [ ! -f /data/ping.rrd ]; then
 
-    # data ever minute for 5 minutes
+    # data every minute for 5 minutes
     # average+min+max every 5 minutes for a year
     # average+min+max every hour for 10 years
 
