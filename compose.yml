@@ -7,4 +7,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ./data:/data
+      - datavol:/data
+
+volumes:
+  datavol:
