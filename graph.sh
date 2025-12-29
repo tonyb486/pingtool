@@ -15,8 +15,8 @@ for i in "$@"; do
         DEF:ping_max=/data/ping.rrd:ping:MAX \
         DEF:loss_min=/data/ping.rrd:loss:MIN \
         DEF:loss_max=/data/ping.rrd:loss:MAX \
-        CDEF:ping_bad=loss,10,GT \
-        CDEF:ping_worse=loss,50,GT \
+        CDEF:ping_bad=loss,10,GT,1,UNKN,IF \
+        CDEF:ping_worse=loss,50,GT,1,UNKN,IF \
         CDEF:delta=ping_max,ping_min,- \
         AREA:ping_min#FFFFFF00 \
         STACK:delta#0000FF40 \
